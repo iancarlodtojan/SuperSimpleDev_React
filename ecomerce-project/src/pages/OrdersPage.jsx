@@ -1,4 +1,4 @@
-import './header.css';
+import Header from '../components/header';
 import './OrdersPage.css';
 
 function OrdersPage() {
@@ -6,6 +6,8 @@ function OrdersPage() {
     <>
       <title>Your Orders</title>
 
+      <Header/>
+      
       <div className="header">
         <div className="left-section">
           <a href="/" className="header-link">
