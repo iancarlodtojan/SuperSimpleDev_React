@@ -1,10 +1,10 @@
 import {Link} from 'react-router'; 
 import './header.css';
 
-function Header({cartItems}) {
+function Header({cart}) {
 
   let totalQuantity = 0;
-  cartItems.forEach(item => {
+  cart.forEach(item => {
     totalQuantity += item.quantity;
   });
 

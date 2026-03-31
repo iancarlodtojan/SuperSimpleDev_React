@@ -3,25 +3,22 @@ import { useEffect, useState } from "react";
 import Header from "../components/header";
 import "./HomePage.css";
 
-function HomePage() {
+function HomePage({cart}) {
   const [products, setProducts] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
+  
 
   useEffect(() => {
     axios.get("/api/products").then((response) => {
       setProducts(response.data);
     });
 
-    axios.get("/api/cart-items").then((response) => {
-      setCartItems(response.data);
-    });
   }, []);
 
   return (
     <>
       <title>Ecommerce Project</title>
 
-      <Header cartItems={cartItems} />
+      <Header cart={cart} />
 
       <div className="home-page">
         <div className="products-grid">
