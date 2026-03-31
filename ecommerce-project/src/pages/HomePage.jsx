@@ -3,6 +3,12 @@ import { products } from "../../starting-code/data/products";
 import "./HomePage.css";
 
 function HomePage() {
+  fetch("http://localhost:3000/api/products")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Products from API:", data);
+    });
+
   return (
     <>
       <title>Ecommerce Project</title>
@@ -25,10 +31,14 @@ function HomePage() {
                     className="product-rating-stars"
                     src={`images/ratings/rating-${product.rating.stars * 10}.png`}
                   />
-                  <div className="product-rating-count link-primary">{product.rating.count}</div>
+                  <div className="product-rating-count link-primary">
+                    {product.rating.count}
+                  </div>
                 </div>
 
-                <div className="product-price">${(product.priceCents / 100).toFixed(2)}</div>
+                <div className="product-price">
+                  ${(product.priceCents / 100).toFixed(2)}
+                </div>
 
                 <div className="product-quantity-container">
                   <select>
@@ -58,7 +68,6 @@ function HomePage() {
               </div>
             );
           })}
-
         </div>
       </div>
     </>
