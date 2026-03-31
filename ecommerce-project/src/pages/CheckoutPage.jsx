@@ -1,8 +1,20 @@
+import axios from "axios";
+import {useEffect,useState} from "react";
 import "./CheckoutPage.css";
 import "./checkout-header.css";
-import { money } from "../utils/money";
+import { formatMoney } from "../utils/money";
 
 function CheckoutPage({ cart }) {
+
+  const [deliveryOptions, setDeliveryOptions] = useState([]);
+
+
+  useEffect(() => {
+    axios.get("/api/delivery-options").then((response) => {
+      setDeliveryOptions(response.data);
+    });
+  }, []);
+
   return (
     <>
       <title>Checkout</title>
@@ -53,7 +65,7 @@ function CheckoutPage({ cart }) {
                         {cartItem.product.name}
                       </div>
                       <div className="product-price">
-                        {money(cartItem.product.priceCents)}
+                        {formatMoney(cartItem.product.priceCents)}
                       </div>
                       <div className="product-quantity">
                         <span>
