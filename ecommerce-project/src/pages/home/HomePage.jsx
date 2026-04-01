@@ -4,7 +4,7 @@ import Header from "../../components/header";
 import "./HomePage.css";
 import ProductsGrid from "./ProductsGrid";
 
-function HomePage({ cart }) {
+function HomePage({ cart, loadCart }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => { //async await
@@ -22,7 +22,7 @@ function HomePage({ cart }) {
       <Header cart={cart} />
 
       <div className="home-page">
-        <ProductsGrid products={products} />
+        <ProductsGrid products={products} loadCart={loadCart} />
       </div>
     </>
   );
